@@ -3,7 +3,7 @@
     I'd like a docking station to release a bike.
 
 Objects | Messages
--------
+------- | -------
 Person | 
 Bike | 
 Docking station | release_bike 
