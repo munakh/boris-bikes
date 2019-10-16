@@ -6,4 +6,8 @@ describe Bike do
     expect(Bike.new).to respond_to('working?')
     end
 
+    it "instances of DockingStation respond to the method dock" do
+      expect(Bike.new).to respond_to('dock')
+    end
+
 end
