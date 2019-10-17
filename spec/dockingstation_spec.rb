@@ -17,10 +17,12 @@ describe DockingStation do
       expect(subject).to respond_to :release_bike
     end
 
+    it "has a default capacity" do
+      expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
+    end
+
     it "raises an error when dock capacity is full" do
-      DockingStation::DEFAULT_CAPACITY.times do
-        subject.dock Bike.new
-      end
+      subject.capacity.times { subject.dock Bike.new }
       expect{subject.dock Bike.new}.to raise_error("Dock is full")
     end
 
