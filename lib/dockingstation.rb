@@ -5,6 +5,7 @@ class DockingStation
 
     def initialize
       @bike
+      @dockingstation = []
     end
 
     def release_bike
@@ -13,6 +14,7 @@ class DockingStation
     end
 
     def dock(bike)
+      fail "Dock is full" if @bike
       @bike = bike
     end
 
