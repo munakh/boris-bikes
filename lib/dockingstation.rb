@@ -10,26 +10,19 @@ class DockingStation
     end
 
     def release_bike
-      fail "Dock is empty" if empty?
-      bikes.pop
+      raise "Dock is empty" if empty?
+      bikes.each_with_index {|bike, index| bikes.delete_at(index) ; return bike if bike.working? }
+      raise "No good bikes"
     end
     
     
-    def dock(bike)
-      fail "Dock is full" if full?
+    def dock(bike, working = true)
+      raise "Dock is full" if full?
+      bike.working = false if !working
       bikes << bike
-      bike
     end
     
-    def report_broken
-      fail "No good bikes" if broken?
-      @broken = true
-    end
     
-    def broken?
-      @broken
-    end
-
    private
     
     attr_reader :bikes
